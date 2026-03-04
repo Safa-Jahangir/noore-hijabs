@@ -1,10 +1,10 @@
-import connectDB from "@/lib/mongodb";
+import dbConnect from "@/lib/mongodb";
 import Product from "@/models/Product";
 import { NextResponse } from "next/server";
 
 // ✅ GET SINGLE PRODUCT
 export async function GET(req, { params }) {
-  await connectDB();
+  await dbConnect();
 
   try {
     const product = await Product.findById(params.id);
@@ -27,7 +27,7 @@ export async function GET(req, { params }) {
 
 // ✅ ADD THIS DELETE FUNCTION
 export async function DELETE(req, { params }) {
-  await connectDB();
+  await dbConnect();
 
   try {
     const deleted = await Product.findByIdAndDelete(params.id);

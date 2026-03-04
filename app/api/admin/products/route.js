@@ -1,9 +1,9 @@
-import connectDB from "@/lib/mongodb";
+import dbConnect from "@/lib/mongodb";
 import Product from "@/models/Product";
 import { NextResponse } from "next/server";
 
 export async function PATCH(req, { params }) {
-  await connectDB();
+  await dbConnect();
 
   try {
     const body = await req.json();

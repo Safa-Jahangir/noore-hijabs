@@ -1,10 +1,10 @@
-import connectDB from "@/lib/mongodb";
+import dbConnect from "@/lib/mongodb";
 import Product from "@/models/Product";
 import { NextResponse } from "next/server";
 
 // ✅ GET PRODUCTS (Dynamic Filtering: Category, Price, & Discounts)
 export async function GET(req) {
-  await connectDB();
+  await dbConnect();
 
   try {
     const { searchParams } = new URL(req.url);
@@ -49,7 +49,7 @@ export async function GET(req) {
 
 // ✅ ADD PRODUCT (Remains same, ensuring category is saved)
 export async function POST(req) {
-  await connectDB();
+  await dbConnect();
 
   try {
     const body = await req.json();
